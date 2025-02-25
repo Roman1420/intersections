@@ -8,39 +8,6 @@ class ApiService {
   constructor() {}
 
   /**
-   * Получить ссылку на ресурс из корня API
-   * @throws {Error} Если ссылки нет в корне API
-   */
-  async getLink(
-    name: EApiResourceNames,
-    urlParams?: IObject,
-    extraParams?: IObject
-  ): Promise<string> {
-    return (
-      (async () => {
-        const link: EApiResourceNames = name || null;
-        if (!link) {
-          throw new Error(`Link '${name}' not found in API Root`);
-        }
-        const href = await this.getLinkWithProtocol(link);
-        const url = new URL(
-          new UriTemplate(href).expand(urlParams ? urlParams : {})
-        );
-        // Добавляем параметры, которые никогда не присутствуют в урле (нр, пагинация)
-        Object.keys(extraParams ?? {}).forEach((param) => {
-          url.searchParams.append(param, extraParams?.[param] ?? '');
-        });
-        return url.toString();
-      })()
-        // NOTE Здесь всегда будет выводиться ошибка, даже если мы просто проверяем, есть ли данный урл или нет
-        .catch((err) => {
-          console.error(err);
-          return '';
-        })
-    );
-  }
-
-  /**
    * Отправить GET запрос
    * @throws {Error} Если при отправке GET запроса произошла ошибка
    */
