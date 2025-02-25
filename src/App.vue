@@ -1,85 +1,68 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="app">
+    <RouterView />
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<script setup lang="ts">
+import { RouterView } from 'vue-router';
+</script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
 
-nav {
+<style lang="scss">
+.app {
   width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+  height: 100%;
+  background: var(--background-page, #121720);
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.skeleton {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--background-skeleton);
+
+  &__text {
+    border-radius: 8px;
+
+    &--large {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    &--middle {
+      height: 24px;
+      border-radius: 5px;
+    }
+
+    &--small {
+      height: 14px;
+      border-radius: 3px;
+    }
+  }
+  
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(90deg, var(--gradients-skeleton-from), var(--gradients-skeleton-to), var(--gradients-skeleton-from));
+    transform: translateX(-100%);
+    animation: skeleton-gradient .9s infinite;
+  }
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+@keyframes skeleton-gradient {
+  from {
+    transform: translateX(-100%);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  to {
+    transform: translateX(120%);
   }
 }
 </style>
