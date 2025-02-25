@@ -1,4 +1,4 @@
-import './assets/main.css'
+import 'iss-ui-kit/dist/colors.css';
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
