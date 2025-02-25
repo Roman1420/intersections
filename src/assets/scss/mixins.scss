@@ -1,0 +1,405 @@
+@use 'iss-ui-kit/dist/mixins.scss' as issMixins;
+
+// устанавливаем шрифт по умолчанию
+@include issMixins.anyTheme {
+  @include issMixins.issDefaultFont;
+}
+
+@include issMixins.lightTheme {
+  --tabs-background: #F1F3F6;
+  --dark-gradients-animation-background-from: rgba(255, 255, 255, 50%);
+  --dark-gradients-animation-background-to: rgba(221, 232, 253, 95%);
+
+}
+
+@include issMixins.darkTheme {
+  --tabs-background: #121720;
+  --dark-gradients-animation-background-from: rgba(18, 23, 32, 50%);
+  --dark-gradients-animation-background-to: rgba(41, 56, 84, 95%);
+
+}
+
+@mixin dropdown-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin dropdown {
+  @include dropdown-wrapper;
+
+  .label {
+    text-overflow: ellipsis;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--text-secondary, #76879F);
+    white-space: nowrap;
+  }
+
+  .ellipsis {
+    min-width: 20px;
+    max-width: 100%;
+
+    &.multiply {
+      max-width: 70%;
+    }
+
+    @include ellipsis;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: flex-start;
+    width: inherit;
+    height: 40px;
+    padding: 8px 36px 8px 12px;
+    color: var(--text-primary, #DADFE5);
+    cursor: pointer;
+    background-color: var(--fields-default, #151C27);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: 0.3s;
+
+    &.active {
+      color: var(--text-primary, #DADFE5);
+    }
+
+    &.disabled {
+      color: #5F656C;
+      pointer-events: none;
+    }
+
+    &.error {
+      border: 1px solid rgba(255, 96, 110, 100%);
+    }
+
+    &-text {
+      display: flex;
+      min-width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .ellipsis {
+        &.multiply {
+          margin-right: 4px;
+        }
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      right: 8px;
+      transition: 0.3s;
+
+      &.rotated {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover {
+      background: var(--fields-on-hover, #19202D);
+    }
+  }
+}
+
+@mixin dropdown-list {
+  position: absolute;
+  bottom: -4px;
+  z-index: 2;
+  width: 100%;
+  max-height: 300px;
+  overflow: hidden auto;
+  text-overflow: ellipsis;
+  color: var(--text-primary, #DADFE5);
+  white-space: nowrap;
+  background-color: var(--fields-default, #151C27);
+  border: 1px solid var(--borders-neutral, #212834);
+  border-radius: 8px;
+  transform: translateY(100%);
+
+  &::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(46, 122, 229);
+    border-radius: 10px;
+  }
+
+  &-above {
+    transform: translateY(-31%);
+  }
+}
+
+@mixin dropdown-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 12px 8px 40px;
+  cursor: pointer;
+  border-top: 1px solid var(--borders-neutral, #212834);
+  transition: 0.3s;
+
+  &-icon {
+    position: absolute;
+    left: 12px;
+  }
+
+  .ellipsis {
+    max-width: 100%;
+  }
+
+  &:first-child {
+    border-top: none;
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+  }
+
+  &:hover {
+    background: var(--fields-on-hover, #19202D);
+  }
+}
+
+@mixin dropdown-tree-parent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borders-neutral, #212834);
+  transition: 0.3s;
+
+  &__info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px 8px 40px;
+    padding-right: calc(4px + 24px + 8px);
+
+    &:hover {
+      background: var(--fields-on-hover, #19202D);
+    }
+
+    span {
+      max-width: calc(100% - (24px + 8px));
+
+      @include ellipsis;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    left: 12px;
+  }
+
+  &__button {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--borders-neutral, #212834);
+    border-radius: 4px;
+  }
+
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+@mixin dropdown-tree-child {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 12px 8px 64px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--borders-neutral, #212834);
+  transition: 0.3s;
+
+  &:first-child {
+    border-top: 1px solid var(--borders-neutral, #212834);
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 36px;
+  }
+
+  span {
+    @include ellipsis;
+  }
+
+  &:hover {
+    background: var(--fields-on-hover, #19202D);
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin background-bordered {
+  background-color: var(--background-content, #1C232E);
+  border-radius: 16px;
+}
+
+@mixin main-scroll {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track, &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--scrolls-base, #151C27);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--scrolls-indicator-default, #343D56);
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: var(--scrolls-base, #151C27);
+  }
+}
+
+@mixin animate($animation,$duration){
+  animation: $animation $duration cubic-bezier(.49,.05,.32,1.04) infinite alternate;
+}
+
+@mixin keyframes($name){
+  @keyframes #{$name}{
+    @content;
+  }
+}
+
+@mixin reports-options {
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+  }
+
+  &__tabs {
+    margin-bottom: 12px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+
+    @include background-bordered;
+
+    &-title {
+      margin-right: auto;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 40px; /* 166.667% */
+      color: var(--text-primary, #E3EBF3);
+      letter-spacing: 0.24px;
+    }
+
+    &-row {
+      display: flex;
+      align-items: center;
+
+      &--filters {
+        $filters-column: 22%;
+        $filters-gap: 8px; 
+        display: grid;
+        grid-template-columns: calc(100% - (2 * $filters-gap) - (2 * $filters-column)) $filters-column $filters-column;
+        gap: $filters-gap;
+
+        &.extended {
+          grid-template-columns: calc(100% - (3 * $filters-gap) - (3 * $filters-column)) $filters-column $filters-column $filters-column;
+        }
+      }
+
+      &--date {
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__input {
+    height: 100%;
+
+    &--middle {
+      min-width: 260px;
+    }
+  }
+
+  &__button {
+    margin-left: auto;
+  }
+
+  &__elements-wrap {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__element {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    span {
+      font-size: 14px;
+      color: var(--text-secondary, #76879F);
+    }
+  }
+}
+
+@mixin icon-in-slot($color) {
+  :slotted(svg) {
+    * {
+      fill: $color;
+      stroke: $color;
+    }
+  }
+}
