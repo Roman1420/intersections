@@ -1,0 +1,55 @@
+@import './font';
+@import './mixins';
+@import './variables';
+@import './classes';
+
+:root {
+  font-family: Golos;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 87%);
+
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --nav-width: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input, textarea {
+	font-family: Golos;
+  outline: none;
+  background: transparent;
+  border: none;
+
+  // &:-internal-autofill-selected {
+  //   appearance: inherit;
+  //   background-image: none;
+  //   background-color: red!important;
+  //   color: inherit;
+  //   background-color: transparent;
+  // }
+}
+
+body {
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary, #76879F);
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
