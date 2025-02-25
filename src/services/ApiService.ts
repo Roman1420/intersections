@@ -1,7 +1,5 @@
 import axios, { type AxiosResponse } from 'axios';
-import UriTemplate from 'es6-url-template';
 import { type IObject } from '@/interfaces/IObject';
-import { EApiResourceNames } from '@/enums/EApiResourceNames';
 import { BASE_PROTOCOL } from '@/constants/api';
 
 class ApiService {
