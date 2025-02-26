@@ -25,7 +25,7 @@
       </div>
       <IssButton
         @click="handleForm"
-        mode="plain"
+        mode="primary"
       >Войти</IssButton>
     </div>
     <div class="auth-view__footer">

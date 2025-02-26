@@ -4,6 +4,7 @@ import LocalizationService from './services/LocalizationService';
 import { router } from './router';
 import App from './App.vue';
 import 'iss-ui-kit/dist/colors.css';
+import 'iss-ui-kit/dist/iss-ui-kit.css';
 
 const initApp = async () => {
   const pinia = createPinia();
