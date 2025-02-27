@@ -1,6 +1,22 @@
 <template>
-  <div class="general-view">pages</div>
+  <div class="general-view">
+    <VNav />
+    <div class="general-view__content">
+      <VHeader />
+      <div class="general-view__preloader-wrapper">
+        <PCircular />
+      </div>
+      <RouterView />
+    </div>
+  </div>
 </template>
+
+<script setup lang="ts">
+import VHeader from "@/components/VHeader.vue";
+import VNav from "@/components/VNav.vue";
+
+
+</script>
 
 <style lang="scss" scoped>
 .general-view {
