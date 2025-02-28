@@ -3,44 +3,50 @@
     class="auth-view"
     @keydown.enter="handleForm"
   >
-    <div class="auth-view__form">
+    <div class="auth-view__wrapper">
       <div class="auth-view__info">
-        <div class="auth-view__info-block">
-          <div class="auth-view__info-title">SecurOS Intersection</div>
-          <div class="auth-view__info-desc">Intellisections</div>
+        <VLogo />
+        <div class="auth-view__info-title">Intellisections</div>
+      </div>
+      <div class="auth-view__form">
+        <div class="auth-view__form-title">Авторизация</div>
+        <div class="auth-view__form-fields">
+          <IssInput
+            v-model="login"
+            type="text"
+            :placeholder="'login'"
+          />
+          <VPasswordInput
+            v-model="password"
+            :placeholder="'password'"
+          />
         </div>
+        <IssButton
+          class="auth-view__form-button"
+          @click="handleForm"
+          mode="primary"
+        >
+          Войти
+        </IssButton>
       </div>
-      <div class="auth-view__form-title">Авторизация</div>
-      <div class="auth-view__form-fields">
-        <IssInput
-          v-model="login"
-          type="text"
-          :placeholder="'login'"
-        />
-        <IssInput
-          v-model="password"
-          type="password"
-          :placeholder="'pass'"
-        />
+      <div class="auth-view__footer">
+        by ISS
       </div>
-      <IssButton
-        @click="handleForm"
-        mode="primary"
-      >Войти</IssButton>
     </div>
-    <div class="auth-view__footer">
-    </div>
-    <div class="auth-view__decorative-background"></div>
-    <div class="auth-view__logo">
+    <div class="auth-view__crossroad-image">
+      <img src="@/assets/images/crossroad-auth.png" alt="">
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { IssButton, IssInput } from 'iss-ui-kit/components';
+import VPasswordInput from '@/components/VPasswordInput.vue';
+import VLogo from "@/components/VLogo.vue";
 
-const login = '';
-const password = '';
+const login = ref('');
+const password = ref('');
 
 const handleForm = () => {
   console.log('handle form');
@@ -48,18 +54,16 @@ const handleForm = () => {
 </script>
 
 <style lang="scss" scoped>
-$animation-duration: 3s;
-$animation-function: ease;
-
 .auth-view {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 100vh;
+  padding: 26px;
   overflow: hidden;
-  background-color: var(--background-page, #121720);
+  background-color: var(--background-content, #1C232E);
 
   &::before, &::after {
     position: absolute;
@@ -73,164 +77,86 @@ $animation-function: ease;
     z-index: 2;
   }
 
-  &__form {
+  &__wrapper {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    min-width: 400px;
-    padding: 48px;
-    background-color: var(--background-content, #1C232E);
+    align-items: center;
+    justify-content: space-between;
+    width: 35%;
+    height: 100%;
+    padding: 0 32px;
     border-radius: 16px;
-    box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 24%);
-    animation: $animation-function animation-form $animation-duration;
+  }
+
+  &__form {
+    width: 300px;
 
     &-title {
-      font-size: 22px;
+      margin-bottom: 80px;
+      font-size: 24px;
+      font-style: normal;
       font-weight: 700;
-      line-height: 26px;
-      color: var(--text-primary, #DADFE5);
+      line-height: 32px; /* 133.333% */
+      color: var(--text-primary, #1B1D27);
       text-align: center;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.24px;
     }
 
     &-fields {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    &-button {
+      width: 100%;
     }
   }
 
   &__info {
     display: flex;
+    gap: 0 4px;
     align-items: center;
-
-    &-block {
-      display: flex;
-      flex-direction: column;
-      margin-left: 4px;
-    }
+    padding: 12px;
+    margin-top: 80px;
 
     &-title {
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 16px;
-      color: var(--text-primary, #DADFE5);
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 40px; /* 125% */
+      color: var(--text-accent-primary, #4A95FF);
+      letter-spacing: 0.32px;
     }
 
-    &-desc {
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 14px;
-      color: var(--text-tertiary, #5F656C);
+    @media (width <= 1400px) {
+      margin-top: 40px;
     }
   }
 
   &__footer {
-    position: absolute;
-    bottom: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 24px;
-    animation: $animation-function animation-opacity $animation-duration;
-  }
-
-  &__version {
-    font-size: 12px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 14px;
-    color: #6A7380;
+    line-height: 24px;
+    color: var(--text-tertiary, #76879F);
+    text-align: center;
   }
 
-  &__logo {
-    $logo-size: 100px;
-    position: absolute;
-    top: calc(50% - (#{$logo-size} / 2));
-    left: calc(50% - (#{$logo-size} / 2));
-    width: $logo-size;
-    height: $logo-size;
-    opacity: 0;
-    animation: $animation-function animation-logo $animation-duration;
-  }
+  &__crossroad-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
 
-}
-
-@keyframes animation-decorate-top {
-  0% {
-    transform: translateY(-100%);
-  }
-
-  50% {
-    transform: translateY(-25%);
-  }
-
-  100% {
-    transform: translateY(-100%);
-  }
-}
-
-@keyframes animation-decorate-bottom {
-  0% {
-    transform: translateY(100%);
-  }
-
-  50% {
-    transform: translateY(25%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-@keyframes animation-logo {
-  0% {
-    opacity: 0;
-    transform: rotate(90deg) scale(.5);
-  }
-
-  10% {
-    opacity: 0;
-    transform: rotate(90deg) scale(.5);
-  }
-
-  50% {
-    opacity: 1;
-    transform: rotate(0deg) scale(1);
-  }
-
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes animation-form {
-  0% {
-    transform: translateY(-100vh);
-  }
-
-  50% {
-    transform: translateY(-100vh);
-  }
-
-  100% {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes animation-opacity {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 }
 </style>
