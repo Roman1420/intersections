@@ -24,8 +24,8 @@
         :isActive="isActive"
         @click="toggleTheme"
       >
-        <template #icon-left><DayIcon /></template>
-        <template #icon-right><NightIcon /></template>
+        <template #icon-left><Icon24Sun /></template>
+        <template #icon-right><Icon24Moon /></template>
       </VToggle>
       <VUser />
       <IssButton
@@ -42,12 +42,10 @@
 import { computed, Ref, ref } from 'vue';
 import { useNavStore } from '@/store/useNavStore';
 import { IssNotificationSidebar, IssButton } from 'iss-ui-kit/components';
-import { Icon24LogOut } from 'iss-ui-kit/icons';
+import { Icon24LogOut, Icon24Sun, Icon24Moon } from 'iss-ui-kit/icons';
 import VTime from '@/components/VTime.vue';
 import VUser from '@/components/VUser.vue';
 import VToggle from '@/components/VToggle.vue';
-import DayIcon from '@/components/icons/DayIcon.vue';
-import NightIcon from '@/components/icons/NightIcon.vue';
 import { useThemeStore } from '@/store/useThemeStore';
 
 const store = useNavStore();
