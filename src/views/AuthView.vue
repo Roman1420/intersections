@@ -33,9 +33,7 @@
         by ISS
       </div>
     </div>
-    <div class="auth-view__crossroad-image">
-      <img src="@/assets/images/crossroad-auth.png" alt="">
-    </div>
+    <img class="auth-view__crossroad-image" src="@/assets/images/crossroad-auth.png" alt="">
   </div>
 </template>
 
@@ -149,14 +147,9 @@ const handleForm = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%;
-    height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+    width: 61%;
+    max-height: 100%;
+    object-fit: contain;
   }
 }
 </style>
