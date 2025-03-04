@@ -150,6 +150,7 @@ const handleForm = () => {
     width: 61%;
     max-height: 100%;
     object-fit: contain;
+    object-position: right;
   }
 }
 </style>
