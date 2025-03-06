@@ -2,20 +2,23 @@
   <div class="general-view">
     <VNav />
     <div class="general-view__content">
-      <VHeader />
-      <div class="general-view__preloader-wrapper">
+      <!-- <VHeader /> -->
+      <RouterView v-if="navList.length > 0" />
+      <div v-else class="general-view__preloader-wrapper">
         <PCircular />
       </div>
-      <RouterView />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import VHeader from "@/components/VHeader.vue";
+// import VHeader from "@/components/VHeader.vue";
 import VNav from "@/components/VNav.vue";
+import PCircular from '@/components/preloaders/PCircular.vue';
+import { storeToRefs } from 'pinia';
+import { useNavStore } from '@/store/useNavStore';
 
-
+const { navList, currentNav } = storeToRefs(useNavStore());
 </script>
 
 <style lang="scss" scoped>
@@ -39,7 +42,7 @@ import VNav from "@/components/VNav.vue";
     flex-direction: column;
     align-items: center;
     width: calc(100% - #{var(--nav-width)});
-    padding: 0 36px 32px;
+    padding: 26px 26px 26px 16px;
     transition: .3s;
   }
 }
