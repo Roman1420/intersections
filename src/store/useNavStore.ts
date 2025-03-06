@@ -8,7 +8,7 @@ import {
   type ComponentPublicInstance
 } from 'vue';
 import { useRouter } from 'vue-router';
-import { Icon24PlaceFilled } from "iss-ui-kit/icons";
+
 
 interface NavItem {
   name: string,
@@ -23,8 +23,8 @@ export const useNavStore = defineStore('Nav', () => {
     {
       name: 'Map',
       link: '/map',
-      icon: defineAsyncComponent(Icon24PlaceFilled) as DefineComponent<{}, {}, ComponentPublicInstance>,
-      title: 'Map',
+      icon: defineAsyncComponent(() => import("iss-ui-kit/icons").then(icons => icons.Icon24PlaceFilled)) as DefineComponent<{}, {}, ComponentPublicInstance>,
+      title: 'menu.map',
       // desc: 'Отслеживание транспортного потока в режиме онлайн',
     },
   ];
