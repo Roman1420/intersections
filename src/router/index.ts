@@ -21,9 +21,14 @@ export const router = createRouter({
       component: GeneralView,
       children: [
         {
-          path: '/map',
+          path: 'profile',
+          name: 'Profile',
+          component: () => import('@/pages/ProfilePage.vue')
+        },
+        {
+          path: 'map',
           name: 'Map',
-          component: () => import('@/pages/MapPage.vue'),
+          component: () => import('@/pages/MapPage/index.vue')
         }
       ]
     },

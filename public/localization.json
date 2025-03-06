@@ -1,6 +1,24 @@
 {
   "en": {
+    "auth": {
+      "authorization": "Authorization",
+      "login": "Login",
+      "password": "Password",
+      "logIn": "Log in"
+    },
+    "menu": {
+      "map": "Map"
+    }
   },
   "ru": {
+    "auth": {
+      "authorization": "Авторизация",
+      "login": "Логин",
+      "password": "Пароль",
+      "logIn": "Войти"
+    },
+    "menu": {
+      "map": "Карта"
+    }
   }
 }

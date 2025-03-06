@@ -18,8 +18,6 @@
       </template>
     </div>
     <div class="v-header__control">
-      <IssNotificationSidebar />
-      <VTime />
       <VToggle
         :isActive="isActive"
         @click="toggleTheme"
@@ -27,12 +25,12 @@
         <template #icon-left><Icon24Sun /></template>
         <template #icon-right><Icon24Moon /></template>
       </VToggle>
-      <VUser />
       <IssButton
         class="v-header__button"
+        mode="bordered"
         @click="showLogoutModal = true"
       >
-        <Icon24LogOut />
+        <Icon24LogOut /> Log out
       </IssButton>
     </div>
   </div>
@@ -41,10 +39,8 @@
 <script setup lang="ts">
 import { computed, Ref, ref } from 'vue';
 import { useNavStore } from '@/store/useNavStore';
-import { IssNotificationSidebar, IssButton } from 'iss-ui-kit/components';
+import { IssButton } from 'iss-ui-kit/components';
 import { Icon24LogOut, Icon24Sun, Icon24Moon } from 'iss-ui-kit/icons';
-import VTime from '@/components/VTime.vue';
-import VUser from '@/components/VUser.vue';
 import VToggle from '@/components/VToggle.vue';
 import { useThemeStore } from '@/store/useThemeStore';
 
@@ -110,6 +106,12 @@ const toggleTheme = () => {
     display: flex;
     gap: 24px;
     align-items: center;
+  }
+
+  &__button,
+  &__button:hover {
+    color: var(--borders-destructive, #FF6875);
+    border-color: var(--borders-destructive, #FF6875);
   }
 }
 </style>

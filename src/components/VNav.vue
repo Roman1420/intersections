@@ -2,33 +2,22 @@
   <div class="v-nav">
     <div class="v-nav__wrapper">
       <VLogo class="v-nav__logo" />
-      <template v-if="store.navList.length > 0 && store.currentNav">
-        <nav
-          class="v-nav__list"
-          :class="collapsed ? 'collapsed' : ''"
-        >
+      <template v-if="navList.length > 0">
+        <nav class="v-nav__list">
           <RouterLink
-            v-for="nav in store.navList"
+            v-for="nav in navList"
             :key="nav.name"
             :to="nav.link"
             class="v-nav__list-item"
-            :class="store.currentNav?.name === nav.name ? 'active' : ''"
+            :class="currentNav?.name === nav.name ? 'active' : ''"
           >
             <component
               :is="nav.icon"
-              :active="store.currentNav?.name === nav.name"
+              :active="currentNav?.name === nav.name"
             />
-            <transition>
-              <span v-if="collapsed">{{ $t(nav.title) }}</span>
-            </transition>
+            <span>{{ $t(nav.title) }}</span>
           </RouterLink>
         </nav>
-        <div
-          class="v-nav__collapse v-nav__list-item"
-          @click="collapse"
-        >
-          <CollapseIcon :active="collapsed" />
-        </div>
       </template>
       <nav
         v-else
@@ -40,31 +29,37 @@
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
       </nav>
+      <RouterLink
+        to="/profile"
+        class="v-nav__user v-nav__list-item"
+      >
+        <VUser/>
+      </RouterLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import VLogo from '@/components/VLogo.vue';
+import VUser from "@/components/VUser.vue";
+import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
-import CollapseIcon from './icons/CollapseIcon.vue';
-import { Ref, ref } from 'vue';
+// import { Ref, ref } from 'vue';
 import { useNavStore } from '@/store/useNavStore';
 import { setCssParamValue } from '@/helpers/setCssParamValue';
 
-const store = useNavStore();
+const { navList, currentNav } = storeToRefs(useNavStore());
 
-const NAV_WIDTH = 87;
-const NAV_WIDTH_COLLAPSED = 193;
+const NAV_WIDTH = 132;
+// const NAV_WIDTH_COLLAPSED = 193;
 
 onMounted(() => {
-  // store.loadNavList();
   setCssParamValue('--nav-width', `${NAV_WIDTH}px`);
 });
 
-let collapsed: Ref<boolean> = ref(false);
+// let collapsed: Ref<boolean> = ref(false);
 
-const collapse = () => {
+/* const collapse = () => {
   if (collapsed.value) {
     setCssParamValue('--nav-width', `${NAV_WIDTH}px`);
   } else {
@@ -72,27 +67,24 @@ const collapse = () => {
   }
 
   collapsed.value = Boolean(!collapsed.value);
-};
+}; */
 </script>
 
 <style lang="scss" scoped>
 .v-nav {
-  padding: 8px 0 8px 8px;
+  width: var(--nav-width);
+  padding: 26px 0;
 
   &__wrapper {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 16px;
     align-items: center;
     justify-content: flex-start;
     height: 100%;
     padding: 16px 8px;
     background: var(--background-content, #1C232E);
-    border-radius: 16px;
-  }
-
-  &__logo {
-    align-self: flex-start;
+    border-radius: 0 16px 16px 0;
   }
 
   &__list {
@@ -101,53 +93,55 @@ const collapse = () => {
     gap: 8px;
     transition: .3s;
 
-    &.collapsed {
-      .v-nav__list-item {
-        padding: 16px 24px;
-      }
-    }
-
     &-item {
       display: flex;
-      gap: 12px;
+      flex-direction: column;
+      gap: 4px;
       align-items: center;
-      justify-content: flex-start;
-      min-width: 56px;
-      min-height: 56px;
-      padding: 16px;
+      justify-content: center;
+      min-width: 88px;
+      min-height: 88px;
+      padding: 16px 8px;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 12px;
       transition: .3s;
 
       svg {
+        color: var(--text-secondary, #4E5A6C);
         transition: .3s;
       }
 
       span {
-        font-size: 16px;
+        /* Body Small 500 */
+        font-family: Golos;
+        font-size: 14px;
+        font-style: normal;
         font-weight: 600;
         line-height: 24px;
-        color: #9DA6B2;
+        color: var(--text-secondary, #4E5A6C);
+        text-align: center;
       }
 
       &:hover {
-        background-color: var(--button-icon-button-on-hover, #363E54)
+        background-color: var(--background-page, #F5F7F9);
       }
 
       &.active {
-        background-color: var(--button-icon-button-content, #151C27);
+        background-color: var(--background-page, #F5F7F9);
+
+        span {
+          color: var(--text-accent-primary, #4A95FF);
+        }
 
         svg {
-          transform: rotate(90deg);
+          color: var(--text-accent-primary, #4A95FF);
         }
       }
     }
   }
 
-  &__collapse {
-    align-self: flex-start;
+  &__user {
     margin-top: auto;
-    margin-left: 3px;
     cursor: pointer;
   }
 }

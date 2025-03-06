@@ -1,24 +1,30 @@
 <template>
-  <div 
+  <div
     class="v-toggle"
-    @click="toggle" 
+    @click="toggle"
   >
-    <div 
-      class="v-toggle__icon-left" 
-      :class="{'left-active': isActive}"
+    <div
+      class="v-toggle__icon-left"
+      :class="{
+        'left-active': !isActive,
+        'ontop-icon': isIconOnTop
+      }"
     >
       <slot name="icon-left"></slot>
     </div>
-    <div 
-      class="v-toggle__icon-right" 
-      :class="{'right-active': isActive}"
+    <div
+      class="v-toggle__icon-right"
+      :class="{
+        'right-active': isActive,
+        'ontop-icon': isIconOnTop
+      }"
     >
       <slot name="icon-right"></slot>
     </div>
-    <div 
+    <div
       class="v-toggle__circle"
       :class="isActive ? 'active' : ''"
-    ></div>
+    />
   </div>
 </template>
 
@@ -27,6 +33,10 @@ import { ref, Ref } from 'vue';
 
 const props = defineProps({
   isActive: {
+    type: Boolean,
+    default: false
+  },
+  isIconOnTop: {
     type: Boolean,
     default: false
   }
@@ -58,8 +68,8 @@ const toggle = () => {
 
 	&:hover {
 		.v-toggle__circle {
-			width: 28px;
-			height: 28px;
+			box-shadow: 0 0 0 0 rgba(57, 58, 61, 25%);
+      transition: .1s;
 		}
 	}
 
@@ -97,16 +107,16 @@ const toggle = () => {
 
   &__icon-right {
 		right: 12px;
+
+    &.ontop-icon {
+			right: 8px;
+		}
 	}
 
-  .left-active.v-toggle__icon-left {
-		left: 12px;
-
-	}
-
-  .right-active.v-toggle__icon-right {
-		right: 12px;
-	}
+  .left-active,
+  .right-active {
+    color: var(--icon-accent, #FFF)
+  }
 }
 
 .ontop-icon {

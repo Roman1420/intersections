@@ -9,16 +9,18 @@
         <div class="auth-view__info-title">Intellisections</div>
       </div>
       <div class="auth-view__form">
-        <div class="auth-view__form-title">Авторизация</div>
+        <div class="auth-view__form-title">
+          {{ $t('auth.authorization') }}
+        </div>
         <div class="auth-view__form-fields">
           <IssInput
             v-model="login"
             type="text"
-            :placeholder="'login'"
+            :placeholder="$t('auth.login')"
           />
           <VPasswordInput
             v-model="password"
-            :placeholder="'password'"
+            :placeholder="$t('auth.password')"
           />
         </div>
         <IssButton
@@ -26,7 +28,7 @@
           @click="handleForm"
           mode="primary"
         >
-          Войти
+          {{ $t('auth.logIn') }}
         </IssButton>
       </div>
       <div class="auth-view__footer">
@@ -42,12 +44,15 @@ import { ref } from "vue";
 import { IssButton, IssInput } from 'iss-ui-kit/components';
 import VPasswordInput from '@/components/VPasswordInput.vue';
 import VLogo from "@/components/VLogo.vue";
+import { router } from "@/router";
 
 const login = ref('');
 const password = ref('');
 
 const handleForm = () => {
-  console.log('handle form');
+  if (login.value === 'admin' && password.value === '1') {
+    router.push({ name: 'Map' });
+  }
 };
 </script>
 
