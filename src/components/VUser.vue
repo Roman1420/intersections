@@ -4,20 +4,20 @@
     class="v-user"
   >
     <VAvatar />
-    <div class="v-user__info">
+    <!-- <div class="v-user__info">
       <div class="v-user__name"></div>
-    <!-- <div class="v-user__position">{{ user.position }}</div> -->
-    </div>
+    <!-- <div class="v-user__position">{{ user.position }}</div>
+    </div> -->
   </div>
   <div
     v-else
     class="v-user"
   >
     <div class="v-user__avatar skeleton"></div>
-    <div class="v-user__info">
+    <!-- <div class="v-user__info">
       <div class="v-user__name skeleton skeleton__text--middle"></div>
       <div class="v-user__position skeleton skeleton__text--small"></div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -35,8 +35,8 @@ const user = ref(null);
   align-items: center;
 
   &__avatar {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background-color: #E1E6ED;
     border-radius: 50%;
   }
