@@ -3,7 +3,7 @@
     <IssInput
       v-model="password"
       :type="type"
-      :placeholder="'password'"
+      :placeholder="placeholder"
     />
     <Icon24View
       v-if="!isPasswordShown && !success"
