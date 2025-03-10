@@ -25,8 +25,9 @@
         </div>
         <IssButton
           class="auth-view__form-button"
-          @click="handleForm"
           mode="primary"
+          size="l"
+          @click="handleForm"
         >
           {{ $t('auth.logIn') }}
         </IssButton>
