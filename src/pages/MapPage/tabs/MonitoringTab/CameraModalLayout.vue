@@ -51,6 +51,7 @@ defineEmits(['close-modal']);
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    padding: 4px 0 8px;
 
     &-title {
       overflow: hidden;
