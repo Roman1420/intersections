@@ -46,13 +46,14 @@ import { IssButton, IssInput } from 'iss-ui-kit/components';
 import VPasswordInput from '@/components/VPasswordInput.vue';
 import VLogo from "@/components/VLogo.vue";
 import { router } from "@/router";
+import { MAP_ROUTE_NAME } from "@/constants/routeNames";
 
 const login = ref('');
 const password = ref('');
 
 const handleForm = () => {
   if (login.value === 'admin' && password.value === '1') {
-    router.push({ name: 'Map' });
+    router.push({ name: MAP_ROUTE_NAME });
   }
 };
 </script>
