@@ -11,7 +11,7 @@ import { useThemeStore } from '@/store/useThemeStore';
 const themeStore = useThemeStore();
 
 onMounted(() => {
-  themeStore.setTheme(undefined);
+  themeStore.setTheme('light');
 });
 </script>
 
@@ -47,7 +47,7 @@ onMounted(() => {
       border-radius: 3px;
     }
   }
-  
+
   &::after {
     position: absolute;
     top: 0;
