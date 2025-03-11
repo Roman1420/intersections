@@ -5,6 +5,7 @@
       <IssButton
         class="profile-page__header-button"
         mode="bordered"
+        size="l"
         @click="logOut"
       >
         <Icon24LogOut /> Log out
