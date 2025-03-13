@@ -1,39 +1,44 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import GeneralView from '@/views/GeneralView.vue';
-import AuthView from '@/views/AuthView.vue';
-import { ROUTE_NAMES } from "@/constants/routeNames";
+import { ROUTE_NAMES } from "@/enums/ERouteNames";
+import AuthView from "@/views/AuthView.vue";
+import GeneralView from "@/views/GeneralView.vue";
+import { createRouter, createWebHistory } from "vue-router";
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/:pathMatch(.*)*',
+      path: "/:pathMatch(.*)*",
       name: ROUTE_NAMES.NOT_FOUND_ROUTE_NAME,
-      component: () => import('@/views/NotFoundView.vue')
+      component: () => import("@/views/NotFoundView.vue"),
     },
     {
-      path: '/auth',
+      path: "/auth",
       name: ROUTE_NAMES.AUTH_ROUTE_NAME,
-      component: AuthView
+      component: AuthView,
     },
     {
-      path: '/',
+      path: "/",
       name: ROUTE_NAMES.GENERAL_ROUTE_NAME,
       component: GeneralView,
       children: [
         {
-          path: '/profile',
+          path: "/profile",
           name: ROUTE_NAMES.PROFILE_ROUTE_NAME,
-          component: () => import('@/pages/ProfilePage.vue')
+          component: () => import("@/pages/ProfilePage.vue"),
         },
         {
-          path: '/map',
+          path: "/map",
           name: ROUTE_NAMES.MAP_ROUTE_NAME,
-          component: () => import('@/pages/MapPage/index.vue')
-        }
-      ]
+          component: () => import("@/pages/MapPage/index.vue"),
+        },
+        {
+          path: "/incidents",
+          name: ROUTE_NAMES.INCIDENTS_ROUTE_NAME,
+          component: () => import("@/pages/IncidentsPage/index.vue"),
+        },
+      ],
     },
-  ]
+  ],
 });
 
 router.beforeEach((to) => {
@@ -42,10 +47,10 @@ router.beforeEach((to) => {
   const isGeneralView = to.name === ROUTE_NAMES.GENERAL_ROUTE_NAME;
 
   if (!isAuthenticated && !isCurrentRouteAuth) {
-      return { name: ROUTE_NAMES.AUTH_ROUTE_NAME };
+    return { name: ROUTE_NAMES.AUTH_ROUTE_NAME };
   }
 
   if (isAuthenticated && (isCurrentRouteAuth || isGeneralView)) {
-      return { name: ROUTE_NAMES.PROFILE_ROUTE_NAME };
+    return { name: ROUTE_NAMES.PROFILE_ROUTE_NAME };
   }
 });
