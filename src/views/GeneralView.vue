@@ -3,7 +3,11 @@
     <VNav />
     <div class="general-view__content">
       <!-- <VHeader /> -->
-      <RouterView v-if="navList.length > 0" />
+      <RouterView v-if="navList.length > 0" v-slot="{ Component }">
+        <KeepAlive>
+          <component :is="Component" />
+        </KeepAlive>
+      </RouterView>
       <div v-else class="general-view__preloader-wrapper">
         <PCircular />
       </div>

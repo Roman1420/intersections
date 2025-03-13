@@ -8,6 +8,7 @@ import {
   type ComponentPublicInstance
 } from 'vue';
 import { useRouter } from 'vue-router';
+import { MAP_ROUTE_NAME } from "@/constants/routeNames";
 
 
 interface NavItem {
@@ -21,7 +22,7 @@ interface NavItem {
 export const useNavStore = defineStore('Nav', () => {
   const mockData: NavItem[] = [
     {
-      name: 'Map',
+      name: MAP_ROUTE_NAME,
       link: '/map',
       icon: defineAsyncComponent(() => import("iss-ui-kit/icons").then(icons => icons.Icon24PlaceFilled)) as DefineComponent<{}, {}, ComponentPublicInstance>,
       title: 'menu.map',
