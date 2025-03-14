@@ -26,7 +26,6 @@
 <script setup lang="ts">
 import VLogo from "@/components/VLogo.vue";
 import VPasswordInput from "@/components/VPasswordInput.vue";
-import { MAP_ROUTE_NAME } from "@/enums/ERouteNames";
 import { router } from "@/router";
 import { ERouteNames } from "@/enums/ERouteNames";
 import { IssButton, IssInput } from "iss-ui-kit/components";
