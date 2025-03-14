@@ -1,32 +1,41 @@
-import { defineStore } from 'pinia';
+import { INCIDENTS_ROUTE_NAME, MAP_ROUTE_NAME } from "@/enums/ERouteNames";
+import { defineStore } from "pinia";
 import {
-  shallowRef,
-  type Ref,
-  defineAsyncComponent,
-  type DefineComponent,
   computed,
-  type ComponentPublicInstance
-} from 'vue';
-import { useRouter } from 'vue-router';
-import { MAP_ROUTE_NAME } from "@/constants/routeNames";
-
+  defineAsyncComponent,
+  shallowRef,
+  type ComponentPublicInstance,
+  type DefineComponent,
+  type Ref,
+} from "vue";
+import { useRouter } from "vue-router";
 
 interface NavItem {
-  name: string,
-  link: string,
-  icon: DefineComponent<{}, {}, ComponentPublicInstance>,
-  title: string,
-  desc?: string
-};
+  name: string;
+  link: string;
+  icon: DefineComponent<{}, {}, ComponentPublicInstance>;
+  title: string;
+  desc?: string;
+}
 
-export const useNavStore = defineStore('Nav', () => {
+export const useNavStore = defineStore("Nav", () => {
   const mockData: NavItem[] = [
     {
       name: MAP_ROUTE_NAME,
-      link: '/map',
-      icon: defineAsyncComponent(() => import("iss-ui-kit/icons").then(icons => icons.Icon24PlaceFilled)) as DefineComponent<{}, {}, ComponentPublicInstance>,
-      title: 'menu.map',
+      link: "/map",
+      icon: defineAsyncComponent(() =>
+        import("iss-ui-kit/icons").then((icons) => icons.Icon24PlaceFilled),
+      ) as DefineComponent<{}, {}, ComponentPublicInstance>,
+      title: "menu.map",
       // desc: 'Отслеживание транспортного потока в режиме онлайн',
+    },
+    {
+      name: INCIDENTS_ROUTE_NAME,
+      link: "/incidents",
+      icon: defineAsyncComponent(() =>
+        import("iss-ui-kit/icons").then((icons) => icons.Icon24CarCrash),
+      ) as DefineComponent<{}, {}, ComponentPublicInstance>,
+      title: "menu.incidents",
     },
   ];
 
@@ -34,7 +43,9 @@ export const useNavStore = defineStore('Nav', () => {
 
   const router = useRouter();
   const currentNav = computed(() => {
-    return navList.value.find((element: NavItem) => element.name === router.currentRoute.value.name);
+    return navList.value.find(
+      (element: NavItem) => element.name === router.currentRoute.value.name,
+    );
   });
 
   // async function loadNavList() {
