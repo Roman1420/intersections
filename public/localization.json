@@ -7,7 +7,70 @@
       "logIn": "Log in"
     },
     "menu": {
-      "map": "Map"
+      "map": "Map",
+      "incidents": "Incidents"
+    },
+    "map": {
+      "title": "Map"
+    },
+    "incidents": {
+      "title": "Incidents"
+    },
+    "tableHeader": {
+      "id": "ID",
+      "incident": "Incident",
+      "camera": "Camera",
+      "objects": "Objects",
+      "direction": "Direction",
+      "dateAndTime": "Date & time",
+      "severityLevel": "Severity level"
+    },
+    "lists": {
+      "titles": {
+        "typesOfIncidents": "Types of incidents",
+        "cameras": "Cameras",
+        "objects": "Objects",
+        "severityLevels": "Severity level"
+      },
+      "incidentsTypes": {
+        "pedestrianInArea": "Pedestrian in a restricted area",
+        "pedestrianOnRoad": "Pedestrian on a road",
+        "pedestrianOnLawn": "Pedestrian on a lawn",
+        "trafficJam": "Traffic jam",
+        "suspectedCrash": "Suspected crash",
+        "crash": "Crash",
+        "wrongWay": "Wrong way",
+        "speedng": "Speeding",
+        "underspeedMove": "Underspeed movement",
+        "abruptInSpeed": "Abrupt decrease in speed",
+        "animalOnRoad": "Animal on road",
+        "vehicleOnSideWalk": "Vehicle on a sidewalk",
+        "smokeDetected": "Smoke detected",
+        "fireDetected": "Fire detected",
+        "foreignObjectDetected": "Foreign object detected",
+        "all": "All types of incident",
+        "vehicleStopInArea": "Vehicle stop in a restricted area",
+        "vehicleStopOnRoad": "Vehicle stop on a road",
+        "vehicleStopOnLawn": "Vehicle stop on a lawn"
+      },
+      "cameras": {
+        "all": "All cameras"
+      },
+      "objects": {
+        "all": "All objects"
+      },
+      "severityLevels": {
+        "all": "All severity levels"
+      }
+    },
+    "incidentsModal": {
+      "id": "ID",
+      "incidentType": "Incident type",
+      "camera": "Camera",
+      "objects": "Objects",
+      "direction": "Direction",
+      "dataTime": "Data time",
+      "severityLevel": "Severity level"
     }
   },
   "ru": {
@@ -18,7 +81,70 @@
       "logIn": "Войти"
     },
     "menu": {
-      "map": "Карта"
+      "map": "Карта",
+      "incidents": "Инциденты"
+    },
+    "map": {
+      "title": "Карта"
+    },
+    "incidents": {
+      "title": "Инциденты"
+    },
+    "tableHeader": {
+      "id": "ID",
+      "incident": "Инцидент",
+      "camera": "Камера",
+      "objects": "Объекты",
+      "direction": "Направление",
+      "dateAndTime": "Дата & время",
+      "severityLevel": "Уровень серьезности"
+    },
+    "lists": {
+      "titles": {
+        "typesOfIncidents": "Типы инцидентов",
+        "cameras": "Камеры",
+        "objects": "Объекты",
+        "severityLevels": "Уровень серьезности"
+      },
+      "incidentsTypes": {
+        "pedestrianInArea": "Пешеход в неположенной зоне",
+        "pedestrianOnRoad": "Пешеход на дороге",
+        "pedestrianOnLawn": "Пешеход в зоне зеленых насаждений",
+        "trafficJam": "Обнаружение затора",
+        "suspectedCrash": "Потенциальная авария",
+        "crash": "Подтвержденная авария",
+        "wrongWay": "Движение транспортного средства по встречной полосе",
+        "speedng": "Движение с повышенной скоростью",
+        "underspeedMove": "Движение с пониженной скоростью",
+        "abruptInSpeed": "Резкое снижение скорости",
+        "animalOnRoad": "Животное на проезжей полосе",
+        "vehicleOnSideWalk": "Транспортное средство в зоне зеленых насаждений",
+        "smokeDetected": "Обнаружено задымление",
+        "fireDetected": "Обнаружено возгорание",
+        "foreignObjectDetected": "Обнаружен посторонний предмет",
+        "all": "Все типы инцидентов",
+        "vehicleStopInArea": "Остановка ТС в запрещенной зоне",
+        "vehicleStopOnRoad": "Остановка ТС на дороге",
+        "vehicleStopOnLawn": "Остановка ТС в зоне зеленых насаждений"
+      },
+      "cameras": {
+        "all": "Все камеры"
+      },
+      "objects": {
+        "all": "Все объекты"
+      },
+      "severityLevels": {
+        "all": "Все уровни серьезности"
+      }
+    },
+    "incidentsModal": {
+      "id": "ID",
+      "incidentType": "Тип инцидента",
+      "camera": "Камера",
+      "objects": "Объекты",
+      "direction": "Направление",
+      "dataTime": "Дата & время",
+      "severityLevel": "Уровень серьезности"
     }
   }
 }
