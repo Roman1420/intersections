@@ -1,4 +1,4 @@
-import { ROUTE_NAMES } from "@/enums/ERouteNames";
+import { ERouteNames } from "@/enums/ERouteNames";
 import AuthView from "@/views/AuthView.vue";
 import GeneralView from "@/views/GeneralView.vue";
 import { createRouter, createWebHistory } from "vue-router";
@@ -8,34 +8,34 @@ export const router = createRouter({
   routes: [
     {
       path: "/:pathMatch(.*)*",
-      name: ROUTE_NAMES.NOT_FOUND_ROUTE_NAME,
+      name: ERouteNames.NOT_FOUND_ROUTE_NAME,
       component: () => import("@/views/NotFoundView.vue"),
     },
     {
       path: "/auth",
-      name: ROUTE_NAMES.AUTH_ROUTE_NAME,
+      name: ERouteNames.AUTH_ROUTE_NAME,
       component: AuthView,
     },
     {
       path: "/",
-      name: ROUTE_NAMES.GENERAL_ROUTE_NAME,
+      name: ERouteNames.GENERAL_ROUTE_NAME,
       component: GeneralView,
       children: [
         {
           path: "/profile",
-          name: ROUTE_NAMES.PROFILE_ROUTE_NAME,
+          name: ERouteNames.PROFILE_ROUTE_NAME,
           component: () => import("@/pages/ProfilePage.vue"),
         },
         {
           path: "/map",
-          name: ROUTE_NAMES.MAP_ROUTE_NAME,
+          name: ERouteNames.MAP_ROUTE_NAME,
           component: () => import("@/pages/MapPage/index.vue"),
         },
-        {
-          path: "/incidents",
-          name: ROUTE_NAMES.INCIDENTS_ROUTE_NAME,
-          component: () => import("@/pages/IncidentsPage/index.vue"),
-        },
+        // {
+        //   path: "/incidents",
+        //   name: ERouteNames.INCIDENTS_ROUTE_NAME,
+        //   component: () => import("@/pages/IncidentsPage/index.vue"),
+        // },
       ],
     },
   ],
@@ -43,14 +43,14 @@ export const router = createRouter({
 
 router.beforeEach((to) => {
   const isAuthenticated = true;
-  const isCurrentRouteAuth = to.name === ROUTE_NAMES.AUTH_ROUTE_NAME;
-  const isGeneralView = to.name === ROUTE_NAMES.GENERAL_ROUTE_NAME;
+  const isCurrentRouteAuth = to.name === ERouteNames.AUTH_ROUTE_NAME;
+  const isGeneralView = to.name === ERouteNames.GENERAL_ROUTE_NAME;
 
   if (!isAuthenticated && !isCurrentRouteAuth) {
-    return { name: ROUTE_NAMES.AUTH_ROUTE_NAME };
+    return { name: ERouteNames.AUTH_ROUTE_NAME };
   }
 
   if (isAuthenticated && (isCurrentRouteAuth || isGeneralView)) {
-    return { name: ROUTE_NAMES.PROFILE_ROUTE_NAME };
+    return { name: ERouteNames.PROFILE_ROUTE_NAME };
   }
 });

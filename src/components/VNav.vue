@@ -30,7 +30,7 @@
         <div class="v-nav__list-item skeleton active"></div>
       </nav>
       <RouterLink
-        :to="{ name: PROFILE_ROUTE_NAME }"
+        :to="{ name: ERouteNames.PROFILE_ROUTE_NAME }"
         class="v-nav__user v-nav__list-item"
       >
         <VUser/>
@@ -47,7 +47,7 @@ import { onMounted } from 'vue';
 // import { Ref, ref } from 'vue';
 import { useNavStore } from '@/store/useNavStore';
 import { setCssParamValue } from '@/helpers/setCssParamValue';
-import { PROFILE_ROUTE_NAME } from "@/constants/routeNames";
+import { ERouteNames } from "@/enums/ERouteNames";
 
 const { navList, currentNav } = storeToRefs(useNavStore());
 
