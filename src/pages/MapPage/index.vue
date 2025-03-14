@@ -1,7 +1,7 @@
 <template>
   <div class="map-page">
     <div class="map-page__header">
-      <div class="map-page__header-title">Map</div>
+      <div class="map-page__header-title">{{  $t('map.title') }}</div>
       <div class="map-page__header-toggle">
         <VToggle isIconOnTop @click="changeTab">
           <template #icon-left><Icon24PollOutline /></template>
@@ -69,6 +69,8 @@ const changeTab = () => {
     height: 100%;
     padding-right: 24px;
     overflow-y: auto;
+
+    @include style.main-scroll;
   }
 }
 </style>
