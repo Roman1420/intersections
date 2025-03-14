@@ -28,6 +28,7 @@ import VLogo from "@/components/VLogo.vue";
 import VPasswordInput from "@/components/VPasswordInput.vue";
 import { MAP_ROUTE_NAME } from "@/enums/ERouteNames";
 import { router } from "@/router";
+import { ERouteNames } from "@/enums/ERouteNames";
 import { IssButton, IssInput } from "iss-ui-kit/components";
 import { ref } from "vue";
 
@@ -36,7 +37,7 @@ const password = ref("");
 
 const handleForm = () => {
   if (login.value === "admin" && password.value === "1") {
-    router.push({ name: MAP_ROUTE_NAME });
+    router.push({ name: ERouteNames.MAP_ROUTE_NAME });
   }
 };
 </script>

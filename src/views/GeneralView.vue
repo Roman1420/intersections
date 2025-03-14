@@ -22,7 +22,7 @@ import PCircular from '@/components/preloaders/PCircular.vue';
 import { storeToRefs } from 'pinia';
 import { useNavStore } from '@/store/useNavStore';
 
-const { navList, currentNav } = storeToRefs(useNavStore());
+const { navList } = storeToRefs(useNavStore());
 </script>
 
 <style lang="scss" scoped>

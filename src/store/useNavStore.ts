@@ -6,9 +6,12 @@ import {
   shallowRef,
   type ComponentPublicInstance,
   type DefineComponent,
-  type Ref,
+  computed,
+  type ComponentPublicInstance
 } from "vue";
 import { useRouter } from "vue-router";
+import { ERouteNames } from "@/enums/ERouteNames";
+
 
 interface NavItem {
   name: string;
@@ -21,16 +24,14 @@ interface NavItem {
 export const useNavStore = defineStore("Nav", () => {
   const mockData: NavItem[] = [
     {
-      name: MAP_ROUTE_NAME,
-      link: "/map",
-      icon: defineAsyncComponent(() =>
-        import("iss-ui-kit/icons").then((icons) => icons.Icon24PlaceFilled),
-      ) as DefineComponent<{}, {}, ComponentPublicInstance>,
-      title: "menu.map",
+      name: ERouteNames.MAP_ROUTE_NAME,
+      link: '/map',
+      icon: defineAsyncComponent(() => import("iss-ui-kit/icons").then(icons => icons.Icon24PlaceFilled)) as DefineComponent<{}, {}, ComponentPublicInstance>,
+      title: 'menu.map',
       // desc: 'Отслеживание транспортного потока в режиме онлайн',
     },
     {
-      name: INCIDENTS_ROUTE_NAME,
+      name:  ERouteNames.INCIDENTS_ROUTE_NAME,
       link: "/incidents",
       icon: defineAsyncComponent(() =>
         import("iss-ui-kit/icons").then((icons) => icons.Icon24CarCrash),

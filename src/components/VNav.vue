@@ -23,7 +23,7 @@
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
       </nav>
-      <RouterLink :to="{ name: PROFILE_ROUTE_NAME }" class="v-nav__user v-nav__list-item">
+      <RouterLink :to="{ name: ERouteNames.PROFILE_ROUTE_NAME }" class="v-nav__user v-nav__list-item">
         <VUser />
       </RouterLink>
     </div>
@@ -36,9 +36,9 @@ import VUser from "@/components/VUser.vue";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 // import { Ref, ref } from 'vue';
-import { PROFILE_ROUTE_NAME } from "@/enums/ERouteNames";
-import { setCssParamValue } from "@/helpers/setCssParamValue";
-import { useNavStore } from "@/store/useNavStore";
+import { useNavStore } from '@/store/useNavStore';
+import { setCssParamValue } from '@/helpers/setCssParamValue';
+import { ERouteNames } from "@/enums/ERouteNames";
 
 const { navList, currentNav } = storeToRefs(useNavStore());
 

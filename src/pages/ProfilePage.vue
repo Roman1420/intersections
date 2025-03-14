@@ -11,13 +11,13 @@
 </template>
 
 <script setup lang="ts">
-import { AUTH_ROUTE_NAME } from "@/enums/ERouteNames";
+import { ERouteNames } from "@/enums/ERouteNames";
 import { router } from "@/router";
 import { IssButton } from "iss-ui-kit/components";
 import { Icon24LogOut } from "iss-ui-kit/icons";
 
 const logOut = () => {
-  router.push({ name: AUTH_ROUTE_NAME });
+  router.push({ name: ERouteNames.AUTH_ROUTE_NAME });
 };
 </script>
 
