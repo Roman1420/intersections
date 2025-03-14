@@ -1,25 +1,27 @@
-import { defineStore } from 'pinia';
+import { INCIDENTS_ROUTE_NAME, MAP_ROUTE_NAME } from "@/enums/ERouteNames";
+import { defineStore } from "pinia";
 import {
-  shallowRef,
-  type Ref,
+  computed,
   defineAsyncComponent,
+  shallowRef,
+  type ComponentPublicInstance,
   type DefineComponent,
   computed,
   type ComponentPublicInstance
-} from 'vue';
-import { useRouter } from 'vue-router';
+} from "vue";
+import { useRouter } from "vue-router";
 import { ERouteNames } from "@/enums/ERouteNames";
 
 
 interface NavItem {
-  name: string,
-  link: string,
-  icon: DefineComponent<{}, {}, ComponentPublicInstance>,
-  title: string,
-  desc?: string
-};
+  name: string;
+  link: string;
+  icon: DefineComponent<{}, {}, ComponentPublicInstance>;
+  title: string;
+  desc?: string;
+}
 
-export const useNavStore = defineStore('Nav', () => {
+export const useNavStore = defineStore("Nav", () => {
   const mockData: NavItem[] = [
     {
       name: ERouteNames.MAP_ROUTE_NAME,
@@ -28,13 +30,23 @@ export const useNavStore = defineStore('Nav', () => {
       title: 'menu.map',
       // desc: 'Отслеживание транспортного потока в режиме онлайн',
     },
+    {
+      name:  ERouteNames.INCIDENTS_ROUTE_NAME,
+      link: "/incidents",
+      icon: defineAsyncComponent(() =>
+        import("iss-ui-kit/icons").then((icons) => icons.Icon24CarCrash),
+      ) as DefineComponent<{}, {}, ComponentPublicInstance>,
+      title: "menu.incidents",
+    },
   ];
 
   const navList: Ref<NavItem[]> = shallowRef(mockData);
 
   const router = useRouter();
   const currentNav = computed(() => {
-    return navList.value.find((element: NavItem) => element.name === router.currentRoute.value.name);
+    return navList.value.find(
+      (element: NavItem) => element.name === router.currentRoute.value.name,
+    );
   });
 
   // async function loadNavList() {

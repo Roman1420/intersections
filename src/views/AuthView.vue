@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="auth-view"
-    @keydown.enter="handleForm"
-  >
+  <div class="auth-view" @keydown.enter="handleForm">
     <div class="auth-view__wrapper">
       <div class="auth-view__info">
         <VLogo />
@@ -10,49 +7,35 @@
       </div>
       <div class="auth-view__form">
         <div class="auth-view__form-title">
-          {{ $t('auth.authorization') }}
+          {{ $t("auth.authorization") }}
         </div>
         <div class="auth-view__form-fields">
-          <IssInput
-            v-model="login"
-            type="text"
-            :placeholder="$t('auth.login')"
-          />
-          <VPasswordInput
-            v-model="password"
-            :placeholder="$t('auth.password')"
-          />
+          <IssInput v-model="login" type="text" :placeholder="$t('auth.login')" />
+          <VPasswordInput v-model="password" :placeholder="$t('auth.password')" />
         </div>
-        <IssButton
-          class="auth-view__form-button"
-          mode="primary"
-          size="l"
-          @click="handleForm"
-        >
-          {{ $t('auth.logIn') }}
+        <IssButton class="auth-view__form-button" mode="primary" size="l" @click="handleForm">
+          {{ $t("auth.logIn") }}
         </IssButton>
       </div>
-      <div class="auth-view__footer">
-        by ISS
-      </div>
+      <div class="auth-view__footer">by ISS</div>
     </div>
-    <img class="auth-view__crossroad-image" src="@/assets/images/crossroad-auth.png" alt="">
+    <img class="auth-view__crossroad-image" src="@/assets/images/crossroad-auth.png" alt="" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { IssButton, IssInput } from 'iss-ui-kit/components';
-import VPasswordInput from '@/components/VPasswordInput.vue';
 import VLogo from "@/components/VLogo.vue";
+import VPasswordInput from "@/components/VPasswordInput.vue";
 import { router } from "@/router";
 import { ERouteNames } from "@/enums/ERouteNames";
+import { IssButton, IssInput } from "iss-ui-kit/components";
+import { ref } from "vue";
 
-const login = ref('');
-const password = ref('');
+const login = ref("");
+const password = ref("");
 
 const handleForm = () => {
-  if (login.value === 'admin' && password.value === '1') {
+  if (login.value === "admin" && password.value === "1") {
     router.push({ name: ERouteNames.MAP_ROUTE_NAME });
   }
 };
@@ -68,17 +51,19 @@ const handleForm = () => {
   height: 100vh;
   padding: 26px;
   overflow: hidden;
-  background-color: var(--background-content, #1C232E);
+  background-color: var(--background-content, #1c232e);
 
-  &::before, &::after {
+  &::before,
+  &::after {
     position: absolute;
     z-index: 1;
     pointer-events: none;
-    content: '';
+    content: "";
     border-radius: 50%;
   }
 
-  &__form, &__footer {
+  &__form,
+  &__footer {
     z-index: 2;
   }
 
@@ -103,7 +88,7 @@ const handleForm = () => {
       font-style: normal;
       font-weight: 700;
       line-height: 32px; /* 133.333% */
-      color: var(--text-primary, #1B1D27);
+      color: var(--text-primary, #1b1d27);
       text-align: center;
       letter-spacing: 0.24px;
     }
@@ -132,7 +117,7 @@ const handleForm = () => {
       font-style: normal;
       font-weight: 700;
       line-height: 40px; /* 125% */
-      color: var(--text-accent-primary, #4A95FF);
+      color: var(--text-accent-primary, #4a95ff);
       letter-spacing: 0.32px;
     }
 
@@ -146,7 +131,7 @@ const handleForm = () => {
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    color: var(--text-tertiary, #76879F);
+    color: var(--text-tertiary, #76879f);
     text-align: center;
   }
 

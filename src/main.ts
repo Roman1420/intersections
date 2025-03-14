@@ -3,6 +3,7 @@ import { createPinia } from 'pinia';
 import LocalizationService from './services/LocalizationService';
 import { router } from './router';
 import App from './App.vue';
+import 'vue-virtual-scroller/dist/vue-virtual-scroller.css';
 import 'iss-ui-kit/dist/colors.css';
 import 'iss-ui-kit/dist/iss-ui-kit.css';
 

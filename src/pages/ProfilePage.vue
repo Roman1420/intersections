@@ -2,30 +2,23 @@
   <div class="profile-page">
     <div class="profile-page__header">
       <div class="profile-page__header-title">Human Workovich</div>
-      <IssButton
-        class="profile-page__header-button"
-        mode="bordered"
-        size="l"
-        @click="logOut"
-      >
+      <IssButton class="profile-page__header-button" mode="bordered" size="l" @click="logOut">
         <Icon24LogOut /> Log out
       </IssButton>
     </div>
-    <div class="profile-page__content">
-      Profile settings coming soon
-    </div>
+    <div class="profile-page__content">Profile settings coming soon</div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ERouteNames } from "@/enums/ERouteNames";
 import { router } from "@/router";
-import { IssButton } from 'iss-ui-kit/components';
-import { Icon24LogOut } from 'iss-ui-kit/icons';
+import { IssButton } from "iss-ui-kit/components";
+import { Icon24LogOut } from "iss-ui-kit/icons";
 
 const logOut = () => {
   router.push({ name: ERouteNames.AUTH_ROUTE_NAME });
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -49,14 +42,14 @@ const logOut = () => {
       font-style: normal;
       font-weight: 700;
       line-height: 32px; /* 133.333% */
-      color: var(--text-primary, #1B1D27);
+      color: var(--text-primary, #1b1d27);
       letter-spacing: 0.24px;
     }
 
     &-button,
     &-button:hover {
-      color: var(--borders-destructive, #FF6875);
-      border-color: var(--borders-destructive, #FF6875);
+      color: var(--borders-destructive, #ff6875);
+      border-color: var(--borders-destructive, #ff6875);
     }
   }
 
@@ -72,7 +65,7 @@ const logOut = () => {
     font-style: normal;
     font-weight: 700;
     line-height: 32px; /* 133.333% */
-    color: var(--text-tertiary, #76879F);
+    color: var(--text-tertiary, #76879f);
     letter-spacing: 0.24px;
   }
 }

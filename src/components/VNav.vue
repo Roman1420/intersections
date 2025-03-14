@@ -11,39 +11,30 @@
             class="v-nav__list-item"
             :class="currentNav?.name === nav.name ? 'active' : ''"
           >
-            <component
-              :is="nav.icon"
-              :active="currentNav?.name === nav.name"
-            />
+            <component :is="nav.icon" :active="currentNav?.name === nav.name" />
             <span>{{ $t(nav.title) }}</span>
           </RouterLink>
         </nav>
       </template>
-      <nav
-        v-else
-        class="v-nav__list"
-      >
+      <nav v-else class="v-nav__list">
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
         <div class="v-nav__list-item skeleton active"></div>
       </nav>
-      <RouterLink
-        :to="{ name: ERouteNames.PROFILE_ROUTE_NAME }"
-        class="v-nav__user v-nav__list-item"
-      >
-        <VUser/>
+      <RouterLink :to="{ name: ERouteNames.PROFILE_ROUTE_NAME }" class="v-nav__user v-nav__list-item">
+        <VUser />
       </RouterLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import VLogo from '@/components/VLogo.vue';
+import VLogo from "@/components/VLogo.vue";
 import VUser from "@/components/VUser.vue";
-import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
+import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 // import { Ref, ref } from 'vue';
 import { useNavStore } from '@/store/useNavStore';
 import { setCssParamValue } from '@/helpers/setCssParamValue';
@@ -55,7 +46,7 @@ const NAV_WIDTH = 132;
 // const NAV_WIDTH_COLLAPSED = 193;
 
 onMounted(() => {
-  setCssParamValue('--nav-width', `${NAV_WIDTH}px`);
+  setCssParamValue("--nav-width", `${NAV_WIDTH}px`);
 });
 
 // let collapsed: Ref<boolean> = ref(false);
@@ -84,7 +75,7 @@ onMounted(() => {
     justify-content: flex-start;
     height: 100%;
     padding: 16px 8px;
-    background: var(--background-content, #1C232E);
+    background: var(--background-content, #1c232e);
     border-radius: 0 16px 16px 0;
   }
 
@@ -92,7 +83,7 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    transition: .3s;
+    transition: 0.3s;
 
     &-item {
       display: flex;
@@ -105,11 +96,11 @@ onMounted(() => {
       padding: 16px 8px;
       text-decoration: none;
       border-radius: 12px;
-      transition: .3s;
+      transition: 0.3s;
 
       svg {
-        color: var(--text-secondary, #4E5A6C);
-        transition: .3s;
+        color: var(--text-secondary, #4e5a6c);
+        transition: 0.3s;
       }
 
       span {
@@ -119,23 +110,23 @@ onMounted(() => {
         font-style: normal;
         font-weight: 600;
         line-height: 24px;
-        color: var(--text-secondary, #4E5A6C);
+        color: var(--text-secondary, #4e5a6c);
         text-align: center;
       }
 
       &:hover {
-        background-color: var(--background-page, #F5F7F9);
+        background-color: var(--background-page, #f5f7f9);
       }
 
       &.active {
-        background-color: var(--background-page, #F5F7F9);
+        background-color: var(--background-page, #f5f7f9);
 
         span {
-          color: var(--text-accent-primary, #4A95FF);
+          color: var(--text-accent-primary, #4a95ff);
         }
 
         svg {
-          color: var(--text-accent-primary, #4A95FF);
+          color: var(--text-accent-primary, #4a95ff);
         }
       }
     }
@@ -149,7 +140,7 @@ onMounted(() => {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity .1s;
+  transition: opacity 0.1s;
 }
 
 .v-enter-from,

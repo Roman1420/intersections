@@ -31,11 +31,11 @@ export const router = createRouter({
           name: ERouteNames.MAP_ROUTE_NAME,
           component: () => import("@/pages/MapPage/index.vue"),
         },
-        // {
-        //   path: "/incidents",
-        //   name: ERouteNames.INCIDENTS_ROUTE_NAME,
-        //   component: () => import("@/pages/IncidentsPage/index.vue"),
-        // },
+        {
+          path: "/incidents",
+          name: ERouteNames.INCIDENTS_ROUTE_NAME,
+          component: () => import("@/pages/IncidentsPage/index.vue"),
+        },
       ],
     },
   ],
