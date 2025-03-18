@@ -43,13 +43,17 @@
         <div class="incidents-table__header-cell">
           <div class="header-cell-content">
             <span class="header-cell-name">{{ $t('tableHeader.dateAndTime') }}</span>
-            <div class="header-cell-sort"></div>
+            <div class="header-cell-sort">
+              <Icon16ArrowUp />
+            </div>
           </div>
         </div>
         <div class="incidents-table__header-cell">
           <div class="header-cell-content">
             <span class="header-cell-name">{{ $t('tableHeader.severityLevel') }}</span>
-            <div class="header-cell-sort"></div>
+            <div class="header-cell-sort">
+              <Icon16ArrowUp />
+            </div>
           </div>
         </div>
         <div class="right-padding"></div>
@@ -90,7 +94,7 @@
               v-if="!entry.scroll"
               :key="entry.generatedId"
               class="incidents-table__body-row"
-              :class="{ 'incidents-table__body-row--viewed': entry.isViewed }"
+              :class="{ 'incidents-table__body-row--not-viewed': !entry.isViewed }"
               @click="selectEntry(entry)"
             >
               <div class="incidents-table__body-cell incidents-table__body-cell--small left-cell">
@@ -301,7 +305,7 @@ onBeforeUnmount(() => {
     width: 100%;
   }
 
-  &__body-row--viewed {
+  &__body-row--not-viewed {
     .incidents-table__body-cell {
       background: var(--accents-destructive-transparent, rgba(255, 104, 117, 20%));
     }
@@ -350,8 +354,6 @@ onBeforeUnmount(() => {
     text-overflow: ellipsis;
     white-space: nowrap;
     background: var(--background-table-default, #141923);
-    border-top: 1px solid var(--borders-neutral, #212834);
-    border-bottom: 1px solid var(--borders-neutral, #212834);
 
     &--small {
       flex: none;
@@ -430,14 +432,13 @@ onBeforeUnmount(() => {
   align-self: stretch;
   min-width: 12px;
   height: 48px;
+  padding-right: 12px;
   cursor: pointer;
 }
 
 .incidents-table__body-row:hover>.incidents-table__body-cell {
   cursor: pointer;
   background: var(--background-table-on-hover, #1C232E);
-  border-top: 1px solid var(--borders-neutral, #212834);
-  border-bottom: 1px solid var(--borders-neutral, #212834);
   transition: 0.3s;
 }
 
@@ -488,6 +489,7 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: center;
   padding: 8px;
+  color: var(--icon-secondary-default, #4E5A6C);
   background: var(--button-icon-button-content, #DCE4EC);
   border-radius: 12px;
 }
@@ -526,7 +528,6 @@ onBeforeUnmount(() => {
 }
 
 .left-cell {
-  border-left: 1px solid var(--borders-neutral, #212834);
   border-radius: 16px 0 0 16px;
 }
 
