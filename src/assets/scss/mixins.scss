@@ -46,10 +46,6 @@
     min-width: 20px;
     max-width: 100%;
 
-    &.multiply {
-      max-width: 70%;
-    }
-
     @include ellipsis;
   }
 
@@ -122,8 +118,7 @@
   text-overflow: ellipsis;
   color: var(--text-primary, #DADFE5);
   white-space: nowrap;
-  background-color: var(--fields-default, #151C27);
-  border: 1px solid var(--borders-neutral, #212834);
+  background: var(--dropdown-background, #FFF);
   border-radius: 8px;
   transform: translateY(100%);
   z-index: 9999;
@@ -155,7 +150,6 @@
   justify-content: flex-start;
   padding: 8px 12px 8px 40px;
   cursor: pointer;
-  border-top: 1px solid var(--borders-neutral, #212834);
   transition: 0.3s;
 
   &-icon {
@@ -187,7 +181,6 @@
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  border-bottom: 1px solid var(--borders-neutral, #212834);
   transition: 0.3s;
 
   &__info {
@@ -221,8 +214,10 @@
     justify-content: center;
     width: 24px;
     height: 24px;
-    border: 1px solid var(--borders-neutral, #212834);
+    border: 1px solid var(--borders-neutral, #E2E7F0);
+    background: var(--button-icon-button-content, #DCE4EC);
     border-radius: 4px;
+    color: var(--icon-secondary-default, #4E5A6C);
   }
 
   &:first-child {
@@ -242,12 +237,7 @@
   gap: 8px;
   padding: 8px 12px 8px 64px;
   cursor: pointer;
-  border-bottom: 1px solid var(--borders-neutral, #212834);
   transition: 0.3s;
-
-  &:first-child {
-    border-top: 1px solid var(--borders-neutral, #212834);
-  }
 
   &:last-child {
     border-bottom: none;
