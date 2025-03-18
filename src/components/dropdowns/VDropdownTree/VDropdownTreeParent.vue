@@ -14,7 +14,7 @@
         class="v-dropdown-tree-parent__icon"
         color="#2E7AE5"
       />
-      <span>{{ `[${item.itsId}] ${item.name}` }}</span>
+      <span>{{ item.name }}</span>
       <div
         v-if="item.children && item.children.length"
         class="v-dropdown-tree-parent__button"

@@ -17,7 +17,6 @@
     >
       <div class="v-dropdown-tree__input-text">
         <span class="ellipsis">{{ selectedValuesNames }}</span>
-        <span v-if="selectedValues.length > 2">{{ `${t('global.andMore')} (${selectedValues.length - 2})` }}</span>
       </div>
       <Icon24ChevronDown
         class="v-dropdown-tree__input-icon"
@@ -212,7 +211,7 @@ const selectedValuesNames = computed(() => {
 
   return selectedValues.value
     .map(element => {
-      const camName = `[${element.itsId}] ${element.name}`;
+      const camName = element.name;
 
       return camName
         + ' ('
