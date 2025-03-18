@@ -1,46 +1,54 @@
 <template>
   <div class="incidents-filters">
     <div class="incidents-filters__block-filters">
-      <VDropdown
-        class="incidents-filters__input"
-        multiply
-        :items="incidentsTypesList"
-        :placeholderText="t('lists.incidentsTypes.all')"
-        :autoSelect="false"
-        :localize="false"
-        sorted
-        @selectValues="handleSelectedTypesOfIncidents"
-      />
-      <VDropdown
-        class="incidents-filters__input"
-        multiply
-        :items="camerasList"
-        :placeholderText="t('lists.cameras.all')"
-        :autoSelect="false"
-        :localize="false"
-        sorted
-        @selectValues="handleSelectedCameras"
-      />
-      <VDropdown
-        class="incidents-filters__input"
-        multiply
-        :items="objectsList"
-        :placeholderText="t('lists.objects.all')"
-        :autoSelect="false"
-        :localize="false"
-        sorted
-        @selectValues="handleSelectedObjects"
-      />
-      <VDropdown
-        class="incidents-filters__input"
-        multiply
-        :items="severityLevelsList"
-        :placeholderText="t('lists.severityLevels.all')"
-        :autoSelect="false"
-        :localize="false"
-        sorted
-        @selectValues="handleSelectedSeverityLevels"
-      />
+      <div class="incidents-filters__input-wrapper">
+        <VDropdown
+          class="incidents-filters__input"
+          multiply
+          :items="incidentsTypesList"
+          :placeholderText="t('lists.incidentsTypes.all')"
+          :autoSelect="false"
+          :localize="false"
+          sorted
+          @selectValues="handleSelectedTypesOfIncidents"
+        />
+      </div>
+      <div class="incidents-filters__input-wrapper">
+        <VDropdownTree
+          class="incidents-filters__input"
+          multiply
+          :items="camerasList"
+          :placeholderText="t('lists.cameras.all')"
+          :autoSelect="false"
+          :localize="false"
+          sorted
+          @selectValues="handleSelectedCameras"
+        />
+      </div>
+      <div class="incidents-filters__input-wrapper">
+        <VDropdown
+          class="incidents-filters__input"
+          multiply
+          :items="objectsList"
+          :placeholderText="t('lists.objects.all')"
+          :autoSelect="false"
+          :localize="false"
+          sorted
+          @selectValues="handleSelectedObjects"
+        />
+      </div>
+      <div class="incidents-filters__input-wrapper">
+        <VDropdown
+          class="incidents-filters__input"
+          multiply
+          :items="severityLevelsList"
+          :placeholderText="t('lists.severityLevels.all')"
+          :autoSelect="false"
+          :localize="false"
+          sorted
+          @selectValues="handleSelectedSeverityLevels"
+        />
+      </div>
     </div>
     <div class="incidents-filters__block-date">
       <span>Dates:</span>
@@ -59,6 +67,7 @@
 import { ref, type Ref } from "vue";
 import { useI18n } from "vue-i18n";
 import VDropdown from "@/components/dropdowns/VDropdown.vue";
+import VDropdownTree from '@/components/dropdowns/VDropdownTree/index.vue';
 import VDropdownTime from '@/components/dropdowns/VDropdownTime.vue';
 import VCalendar from '@/components/VCalendar.vue';
 import { IDropdownItem } from '@/interfaces/IDropdownItem';
@@ -74,22 +83,114 @@ const camerasList = ref([
   {
     name: 'Camera 1',
     value: '1',
-    id: '1'
+    id: '1',
+    itsId: '1',
+    statistic_db_id: '1',
+    key: "1",
+    children: [
+      {
+        key: "1-1",
+        itsId: "1-1",
+        title: "Lane 1",
+        id: "1-1",
+        name: "Lane 1",
+        zoneIds: ["1-1", "1-1-1", "1-1-2"],
+        statistic_db_id: "1-1",
+      },
+      {
+        key: "1-2",
+        itsId: "1-2",
+        title: "Lane 2",
+        id: "1-2",
+        name: "Lane 2",
+        zoneIds: ["1-2", "1-2-1", "1-2-2"],
+        statistic_db_id: "1-2",
+      }
+    ]
   },
   {
     name: 'Camera 2',
     value: '2',
-    id: '2'
+    id: '2',
+    itsId: '2',
+    statistic_db_id: '2',
+    key: "2",
+    children: [
+      {
+        key: "2-1",
+        itsId: "2-1",
+        title: "Lane 1",
+        id: "2-1",
+        name: "Lane 1",
+        zoneIds: ["2-1", "2-1-1", "2-1-2"],
+        statistic_db_id: "2-1",
+      },
+      {
+        key: "2-2",
+        itsId: "2-2",
+        title: "Lane 2",
+        id: "2-2",
+        name: "Lane 2",
+        zoneIds: ["2-2", "2-2-1", "2-2-2"],
+        statistic_db_id: "2-2",
+      }
+    ]
   },
   {
     name: 'Camera 3',
     value: '3',
-    id: '3'
+    id: '3',
+    itsId: '3',
+    statistic_db_id: '3',
+    key: "3",
+    children: [
+      {
+        key: "3-1",
+        itsId: "3-1",
+        title: "Lane 1",
+        id: "3-1",
+        name: "Lane 1",
+        zoneIds: ["3-1", "3-1-1", "3-1-2"],
+        statistic_db_id: "3-1",
+      },
+      {
+        key: "3-2",
+        itsId: "3-2",
+        title: "Lane 2",
+        id: "3-2",
+        name: "Lane 2",
+        zoneIds: ["3-2", "3-2-1", "3-2-2"],
+        statistic_db_id: "3-2",
+      }
+    ]
   },
   {
     name: 'Camera 4',
     value: '4',
-    id: '4'
+    id: '4',
+    itsId: '4',
+    statistic_db_id: '4',
+    key: "4",
+    children: [
+      {
+        key: "4-1",
+        itsId: "4-1",
+        title: "Lane 1",
+        id: "4-1",
+        name: "Lane 1",
+        zoneIds: ["4-1", "4-1-1", "4-1-2"],
+        statistic_db_id: "4-1",
+      },
+      {
+        key: "4-2",
+        itsId: "4-2",
+        title: "Lane 2",
+        id: "4-2",
+        name: "Lane 2",
+        zoneIds: ["4-2", "4-2-1", "4-2-2"],
+        statistic_db_id: "4-2",
+      }
+    ]
   },
 ]);
 const objectsList = ref([
@@ -181,6 +282,10 @@ const handleSelectedSeverityLevels = (selectedValues: IDropdownItem[]) => {
     align-items: center;
     justify-content: flex-start;
     width: 100%;
+  }
+
+  &__input-wrapper {
+    width: 25%;
   }
 }
 </style>
