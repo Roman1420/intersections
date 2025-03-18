@@ -17,7 +17,6 @@
     >
       <div class="v-dropdown__input-text">
         <span :class="[multiply ? 'multiply' : '', 'ellipsis']">{{ selectedValuesNames }}</span>
-        <span v-if="selectedValues.length > 2">{{ `${t('global.andMore')} (${selectedValues.length - 2})` }}</span>
       </div>
       <Icon24ChevronDown
         class="v-dropdown__input-icon"
@@ -41,7 +40,12 @@
         @click="handleItemClick(item)"
       >
         <Icon24CheckedMinOutline
-          v-if="isSelectedValue(item.id)"
+          v-if="isSelectedValue(item.id) && multiply"
+          class="v-dropdown__item-icon"
+          color="#2E7AE5"
+        />
+        <Icon24RadioMinOutline
+          v-if="isSelectedValue(item.id) && !multiply"
           class="v-dropdown__item-icon"
           color="#2E7AE5"
         />
@@ -62,7 +66,7 @@ import {
 } from 'vue';
 import { useDropdown } from '@/composables/useDropdown';
 import { IDropdownItem } from '@/interfaces/IDropdownItem';
-import { Icon24ChevronDown, Icon24CheckedMinOutline } from "iss-ui-kit/icons";
+import { Icon24ChevronDown, Icon24CheckedMinOutline, Icon24RadioMinOutline } from "iss-ui-kit/icons";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
@@ -208,22 +212,12 @@ const selectedValuesNames = computed(() => {
       ? t(selectedValues.value[0].name)
       : selectedValues.value[0].name;
   }
-  if (selectedValues.value.length < 3) {
-    return selectedValues.value
+  return selectedValues.value
       .map((item) => props.localize
         ? t(item.name)
         : item.name
       )
       .join(', ');
-  }
-  return selectedValues.value
-    .slice(0, 2)
-    .map((item) => {
-      return props.localize
-        ? t(item.name)
-        : item.name;
-    })
-    .join(', ');
 });
 
 const itemsList = (): IDropdownItem[] => {
