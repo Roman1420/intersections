@@ -8,7 +8,7 @@
             <IssRoundIconButton
               v-if="canClose && hasCloseButton"
               class="v-modal-wrapper__close"
-              mode="content"
+              :mode="buttonMode"
               @click="hide"
             >
               <Icon24CloseOutline />
@@ -35,6 +35,7 @@ interface Props {
   hasCloseButton?: boolean;
   hasBlackout?: boolean;
   hasBlur?: boolean;
+  buttonMode?: "system" | "accent" | "content" | undefined;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -46,6 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
   hasCloseButton: true,
   hasBlackout: true,
   hasBlur: false,
+  buttonMode: "system",
 });
 
 const emit = defineEmits(["update:modelValue", "show", "hide"]);
@@ -135,6 +137,7 @@ defineExpose({ show, hide });
     position: absolute;
     top: 0;
     right: -8px;
+    color: var(--icon-secondary-default, #4E5A6C);
     transform: translateX(100%);
   }
 }
