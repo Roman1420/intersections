@@ -1,4 +1,3 @@
-import { INCIDENTS_ROUTE_NAME, MAP_ROUTE_NAME } from "@/enums/ERouteNames";
 import { defineStore } from "pinia";
 import {
   computed,
@@ -6,8 +5,7 @@ import {
   shallowRef,
   type ComponentPublicInstance,
   type DefineComponent,
-  computed,
-  type ComponentPublicInstance
+  type Ref
 } from "vue";
 import { useRouter } from "vue-router";
 import { ERouteNames } from "@/enums/ERouteNames";
